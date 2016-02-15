@@ -22,8 +22,7 @@ class VendingMachine:
             self.coins.append(coin)
         if self.get_coins_value() > self.products[selected_product]:
             self.coins = []
-            claysstuff.blinklight()
-
+            
     def get_coins_value(self):
         cash = 0
         for index in range(len(self.coins)):

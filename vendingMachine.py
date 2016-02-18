@@ -17,12 +17,15 @@ class VendingMachine:
         self.coins = []
         self.products = {APPLE: 0.65, ORANGE: 0.75, BANANA: 1.0}
 
-    def input_coin(self, coin, selected_product):
+    def input_coin(self, coin):
         if coin in self.valid_coins:
             self.coins.append(coin)
-        if self.get_coins_value() > self.products[selected_product]:
-            self.coins = []
-            
+
+    def can_purchase(self, selected_product):
+        if self.get_coins_value() >= self.products[selected_product]:
+            return True
+        return False
+
     def get_coins_value(self):
         cash = 0
         for index in range(len(self.coins)):
@@ -36,6 +39,7 @@ class VendingMachine:
 
     def purchase_product(self, product):
         if product in self.products:
+            self.coins = []
             return "Purchased {}".format(product)
 
     def get_product_price(self, product):

@@ -1,3 +1,4 @@
+#!/usr/bin/python
 import vendingMachine
 
 x = vendingMachine.VendingMachine()
@@ -47,18 +48,21 @@ while not terminate:
     choice = input("Input coin [N,D,Q,$]: ")
 
     if choice == "N":
-        x.input_coin(vendingMachine.NICKEL, selected_product)
+        x.input_coin(vendingMachine.NICKEL)
     elif choice == "D":
-        x.input_coin(vendingMachine.DIME, selected_product)
+        x.input_coin(vendingMachine.DIME)
     elif choice == "Q":
-        x.input_coin(vendingMachine.QUARTER, selected_product)
+        x.input_coin(vendingMachine.QUARTER)
     elif choice == "$":
-        x.input_coin(vendingMachine.DOLLAR, selected_product)
+        x.input_coin(vendingMachine.DOLLAR)
     elif choice == "X":
         print("Exit")
         terminate = True
     else:
         print("Invalid coin. Try again...")
+
+    if x.can_purchase(selected_product):
+        print(x.purchase_product(selected_product))
 
     if x.get_coins_value() > 0:
         message = "${:0,.2f}".format(x.get_coins_value())

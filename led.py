@@ -1,8 +1,7 @@
 from time import sleep
 import RPi.GPIO as GPIO
 
-class Blinker:
-
+class LED:
 
     _pin = 0
 
@@ -16,3 +15,9 @@ class Blinker:
             sleep(delay)
             GPIO.output(self._pin, True)
             sleep(delay)
+
+    def turn_on(self):
+        GPIO.output(self._pin, GPIO.HIGH)
+
+    def turn_off(self):
+        GPIO.output(self._pin, GPIO.LOW)

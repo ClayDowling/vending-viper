@@ -11,9 +11,9 @@ class LED:
 
     def blink(self, times, delay):
         for i in range(times):
-            GPIO.output(self._pin, False)
-            sleep(delay)
             GPIO.output(self._pin, True)
+            sleep(delay)
+            GPIO.output(self._pin, False)
             sleep(delay)
 
     def turn_on(self):

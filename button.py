@@ -5,7 +5,7 @@ class Button:
     _pin = 0
 
     def __init__(self, pin, callback_function):
-        _pin = pin
+        self._pin = pin
         self._setup_watcher(callback_function)
 
     def __del__(self):

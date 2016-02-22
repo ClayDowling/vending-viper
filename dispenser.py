@@ -7,8 +7,8 @@ class Dispenser:
 
     _dispense_led = None
 
-    def __init__(self, pin, led = None):
-        dispensed_led = led
+    def __init__(self, pin, ledOverride = None):
+        dispensed_led = ledOverride
         if None == dispensed_led:
             self._dispense_led = led.LED(pin)
 
@@ -21,5 +21,6 @@ class Dispenser:
         """
 
         self._dispense_led.blink(10, 0.1)
+        self._dispense_led.turn_off()
 
         return False
